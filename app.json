@@ -1,27 +1,27 @@
 {
-  "expo": {
-    "name": "LikeMustache",
-    "slug": "LikeMustache",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
+    "expo": {
+        "name": "LikeMustache",
+        "slug": "LikeMustache",
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "icon": "./src/assets/iconImg.png",
+        "userInterfaceStyle": "light",
+        "splash": {
+            "image": "./src/assets/iconImg.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#ffffff"
+        },
+        "ios": {
+            "supportsTablet": true
+        },
+        "android": {
+            "adaptiveIcon": {
+                "foregroundImage": "./src/assets/iconImg.png",
+                "backgroundColor": "#ffffff"
+            }
+        },
+        "web": {
+            "favicon": "./src/assets/iconImg.png"
+        }
     }
-  }
 }
