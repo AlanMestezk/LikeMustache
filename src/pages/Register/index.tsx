@@ -36,7 +36,7 @@ export const Register: React.FC = ()=>{
                                     index: 1,
                                     routes: [
                                         { name: 'Home' },
-                                        { name: 'Login' }
+                                        { name: 'Login', params:{userName: name} }
                                     ]
                                 }
                             )
@@ -44,7 +44,7 @@ export const Register: React.FC = ()=>{
 
                         setLoad(false);  // Mantém a tela de carregamento apenas se o registro for bem-sucedido
 
-                    }, 10000); // 10 segundos
+                    }, 18000); // 10 segundos
             }
             return () => clearTimeout(timer); // Limpa o timeout se o componente desmontar
 
@@ -59,19 +59,37 @@ export const Register: React.FC = ()=>{
 
     const handleSingUp = async () => {
 
-        if (email !== '' && password !== '') {
+        if (email !== '' && password !== '' && name !== '') {
 
             setLoad(true); // inicia o carregamento de 10 seg
 
             await firebase.auth()
                 .createUserWithEmailAndPassword(email, password)
                 .then(
-
                     (value: any) => {
                         
-                        
-                        console.log(`${name} cadastrado com sucesso✅`)
+                        console.log('')
+                        console.log("======================================")
+                        console.log(`🥸 Usuário cadastrado com sucesso✅`)
+            
+                        // Atualizando o perfil do usuário para incluir o nome do usuário
+                        value.user.updateProfile(
+                            {displayName: name}
 
+                        ).then(
+                            () => {
+                                
+                                
+                                console.log(`🥸 Nome: ${name}`)
+                                console.log("======================================")
+                                console.log('')
+                            }
+                        ).catch(
+                            (error: any) => {
+                                console.error(`🥸 Erro ao salvar o nome do usuário: ${error}`);
+                            }
+                        );
+            
                         //cadastrando o nome dentro do laço
                         firebase.database()
                                 .ref('Users')
@@ -81,9 +99,9 @@ export const Register: React.FC = ()=>{
                                         name: name
                                     }
                                 )
-
+            
                         setLoad(true);  // Inicia o redirecionamento após o sucesso do registro
-
+            
                     }
                 )
                 .catch(

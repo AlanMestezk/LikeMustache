@@ -54,7 +54,7 @@ export const LoginStyle = StyleSheet.create(
             fontWeight: 'bold'
         },
         viewTouchButtons:{
-            justifyContent: 'space-around',
+            justifyContent: 'space-between',
             alignItems: 'center',
             flexDirection: 'row',
             width: '60%'
@@ -66,7 +66,7 @@ export const LoginStyle = StyleSheet.create(
         },
         textShowPass:{
             fontSize: 15,
-            fontWeight: 'bold'
+            fontWeight: 'bold',
         },
         btnLogin:{
             justifyContent: 'space-around',

@@ -2,6 +2,7 @@ import { HomeStyles }                          from "./styles"
 import { useNavigation }                       from "@react-navigation/native"
 import { View, Text, Image, TouchableOpacity } from "react-native"
 
+
 const logo     = require ('../../assets/iconImg.png')
 const login    = require ('../../assets/login.png')
 const register = require ('../../assets/register.png')

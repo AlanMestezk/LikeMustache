@@ -14,8 +14,8 @@ export const RegisterStyle = StyleSheet.create(
             marginBottom: 26
         },
         logo:{
-            width: 180,
-            height: 120
+            width: 120,
+            height: 80
         },
         textLogo:{
             fontSize: 22,
@@ -24,7 +24,7 @@ export const RegisterStyle = StyleSheet.create(
         viewText:{
             justifyContent: 'center',
             alignItems: 'center',
-            margin: 20
+            margin: 5
         },
         text:{
             fontSize: 20,

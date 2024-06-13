@@ -12,6 +12,7 @@ export const Login: React.FC = ()=>{
     const [load,                    setLoad] = useState<boolean>(false)
     const [email,                  setEmail] = useState<string | any>('')
     const [password,            setPassword] = useState<string | number | any>('')
+    const [userName,            setUserName] = useState<string | any>('') //estado para armazenar o nome
     const [showPassword,    setShowPassword] = useState<boolean>(false)
     const [loginSuccess,    setLoginSuccess] = useState<boolean>(false)  // Novo estado para controle do sucesso do login
 
@@ -30,7 +31,8 @@ export const Login: React.FC = ()=>{
             timer = setTimeout(
                 () => {
 
-                navigation.navigate('CameIn')
+                navigation.navigate('CameIn') // alem de ir para outra tela eu passo o nome de usuário para ela tambem
+                navigation.navigate('CameIn', { userName: userName })
                 setLoad(false) //intenção: manter a tela de login apenas se o login for bem sucedido 
 
             }, 7000);
@@ -49,43 +51,50 @@ export const Login: React.FC = ()=>{
             setLoginSuccess(false)  // Reseta o estado de sucesso do login
 
             await firebase.auth()
-                  .signInWithEmailAndPassword(email, password)
-                  .then(
-                        (value)=>{
+            .signInWithEmailAndPassword(email, password)
+            .then(
+                (value)=>{
 
-                        console.log(`Login com o email ${value.user?.email} realizado com sucesso`)
-                        setLoginSuccess(true)  // Marca o login como bem-sucedido
-                    }
-                   )
-                  .catch(
+                    setUserName(value.user?.displayName) // Salva o nome do usuário
 
-                    (error)=>{
+                    console.log('')
+                    console.log("======================================")
+                    console.log(`🥸  Usuario ${value.user?.displayName} acessou a conta💚`)
+                    console.log("======================================")
+                    console.log('')
 
-                        setLoad(false)  // Interrompe o carregamento em caso de erro
-                        setLoginSuccess(false)  // Garante que o estado de sucesso do login seja falso
+                    navigation.navigate('CameIn', { userName: value.user?.displayName }) // Navega para 'CameIn' após o login bem-sucedido
+                }
+            )
+            .catch(
 
-                        switch (error.code) {
+            (error)=>{
 
-                            case 'auth/internal-error':
-                                alert(`O e-mail ou senha está incorreto.`);
-                                console.log(`Erro: ${error.code}`)
-                                break;
+                setLoad(false)  // Interrompe o carregamento em caso de erro
+                setLoginSuccess(false)  // Garante que o estado de sucesso do login seja falso
 
-                            case 'auth/invalid-email':
-                                alert(`Insira um e-mail válido.`);
-                                break;
+                switch (error.code) {
 
-                            case 'auth/too-many-requests':
-                                alert('O acesso a esta conta foi temporariamente desabilitado devido a várias tentativas de login sem sucesso. Você pode restaurá-lo imediatamente redefinindo sua senha ou tentar novamente mais tarde.')
-                                break;
+                    case 'auth/internal-error':
+                        alert(`O e-mail ou senha está incorreto.`);
+                        console.log(`Erro: ${error.code}`)
+                        break;
 
-                            default:
-                                console.log(`Ops, deu erro >> ${error.code}: ${error.message}`);
-                                alert(`Ocorreu um erro, tente novamente mais tarde.`);
-                                break;
-                        }
-                    }
-                )
+                    case 'auth/invalid-email':
+                        alert(`Insira um e-mail válido.`);
+                        break;
+
+                    case 'auth/too-many-requests':
+                        alert('O acesso a esta conta foi temporariamente desabilitado devido a várias tentativas de login sem sucesso. Você pode restaurá-lo imediatamente redefinindo sua senha ou tentar novamente mais tarde.')
+                        break;
+
+                    default:
+                        console.log(`Ops, deu erro >> ${error.code}: ${error.message}`);
+                        alert(`Ocorreu um erro, tente novamente mais tarde.`);
+                        break;
+                }
+            }
+            )
             
             setEmail('')
             setPassword('')
