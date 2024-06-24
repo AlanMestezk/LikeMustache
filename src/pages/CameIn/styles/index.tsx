@@ -9,7 +9,23 @@ export const CameInStyles = StyleSheet.create(
             alignItems: 'center'
         },
         text:{
-             fontFamily: 'Roboto'
+             fontFamily: 'Roboto',
+             fontSize: 22,
+             fontWeight: 'bold'
+        },
+        button:{
+            margin: 20,
+            backgroundColor: 'lightblue',
+            width: 100,
+            padding: 8,
+            justifyContent: 'center',
+            alignItems: 'center'
+        },
+        textButton:{
+            color: 'aliceblue',
+            fontFamily: 'Roboto',
+            fontSize: 15,
+            fontWeight: 'bold'
         }
     }
 )

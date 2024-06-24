@@ -15,9 +15,9 @@ export const CameIn: React.FC = ()=>{
             <Text style={CameInStyles.text}>Entrou, bem vindo</Text>
             <Text style={CameInStyles.text}>{userName || 'Usuário desconhecido'}</Text>
 
-            <TouchableOpacity onPress={()=>{navigation.navigate("Home")}}>
+            <TouchableOpacity onPress={()=>{navigation.navigate("Home")}} style={CameInStyles.button}>
 
-                <Text style={CameInStyles.text}>Sair</Text>
+                <Text style={CameInStyles.textButton}>Sair</Text>
 
             </TouchableOpacity>
 

@@ -1,5 +1,6 @@
 import firebase                                                              from "../../data/firebaseConfig"
 import { RegisterStyle }                                                     from "./styles"
+import {launchImageLibrary }                                                 from 'react-native-image-picker'
 import { useEffect, useState }                                               from "react"
 import { CommonActions, useNavigation }                                      from "@react-navigation/native"
 import { View, Text, TouchableOpacity, TextInput, Image, ActivityIndicator } from "react-native"
