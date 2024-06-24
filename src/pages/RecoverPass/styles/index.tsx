@@ -67,6 +67,33 @@ export const RecoverPassStyle = StyleSheet.create(
             flex: 1,
             justifyContent: 'center',
             alignItems: 'center',
+            padding: 12
+        },
+        buttonRecover:{
+            width: 160,
+            height:40,
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: 'lightgray',
+            borderWidth: 3,
+            borderColor: 'black',
+            borderRadius: 8,
+            margin: 20
+        },
+        textButtonRec:{
+            fontSize: 18,
+            fontWeight: 'bold'
+        },
+        titleRecoverEmail:{
+            fontSize: 18,
+            backgroundColor: 'lightblue',
+            width: 200,
+            textAlign: 'center',
+            fontWeight: 'bold',
+            borderWidth: 3,
+            borderColor: 'blue',
+            marginTop: 10,
+            borderRadius: 7
         },
         imgRecover:{
             width: 190,
@@ -74,8 +101,9 @@ export const RecoverPassStyle = StyleSheet.create(
             margin: 20
         },
         titleRecover:{
-            fontSize: 18,
+            fontSize: 15,
             fontWeight: 'bold',
+            fontFamily: 'Roboto'
             
         }
     }
